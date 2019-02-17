@@ -1,0 +1,35 @@
+@import '~bulma/bulma.sass';
+
+.container {
+  max-width: 900px!important;
+}
+
+.header {
+  border-bottom: 1px solid $grey-light;
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $size-7;
+  }
+
+  .logo {
+    width: $size-2;
+    height: $size-2;
+    background: center /cover url('../assets/logo.png') no-repeat;
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+
+    a {
+      margin-left: $size-6;
+    }
+  }
+}
+
+.content {
+  padding: $size-7;
+}
