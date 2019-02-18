@@ -4,6 +4,10 @@
   max-width: 900px!important;
 }
 
+a.is-active {
+  text-decoration: underline;
+}
+
 .header {
   border-bottom: 1px solid $grey-light;
 
