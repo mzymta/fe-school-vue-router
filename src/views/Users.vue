@@ -15,13 +15,24 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {users} from '../common/mocks/users';
+  import {UserService} from '../common/services/UserService';
+  import {IUser} from '../common/interfaces/IUser';
+
+  interface IUsersData {
+    users: IUser[];
+  }
 
   export default Vue.extend({
-    data() {
+    data(): IUsersData {
       return {
-        users
+        users: []
       };
+    },
+    created() {
+      UserService.getUserList()
+        .then(users => {
+          this.users = users;
+        });
     }
   });
 </script>

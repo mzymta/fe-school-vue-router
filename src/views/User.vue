@@ -3,24 +3,29 @@
     v-if="user"
     class="container">
     <h1 class="title is-1">{{ user.name }}</h1>
-    <p>{{ user.description }}</p>
-    <h2 class="title is-2">Posts</h2>
-    <ul>
-      <router-link
-        v-for="post in user.posts"
-        :key="post.id"
-        tag="li"
-        :to="'/users/' + user.id + '/posts/' + post.id">
-        <a href="">{{ post.title }}</a>
-      </router-link>
-    </ul>
+    <div class="tabs">
+      <ul class="user-menu">
+        <router-link
+          tag="li"
+          exact
+          :to="'/users/' + user.id + '/profile'">
+          <a href="">Profile</a>
+        </router-link>
+        <router-link
+          tag="li"
+          :to="'/users/' + user.id + '/posts/'">
+          <a href="">Posts</a>
+        </router-link>
+      </ul>
+    </div>
+    <router-view/>
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
-  import {users} from '../common/mocks/users';
   import {IUser} from '../common/interfaces/IUser';
+  import {UserService} from '../common/services/UserService';
 
   interface IUserData {
     user: IUser | null;
@@ -33,8 +38,16 @@
       };
     },
     created() {
-      this.user = users.find((user: IUser) =>
-        user.id === this.$route.params.userId) || null;
+      UserService.getUserById(this.$route.params.userId)
+        .then(user => {
+          this.user = user;
+        });
     }
   });
 </script>
+
+<style lang="scss" scoped>
+  .user-menu li {
+    margin-top: 0;
+  }
+</style>

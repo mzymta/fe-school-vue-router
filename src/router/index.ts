@@ -4,6 +4,8 @@ import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Users from '../views/Users.vue';
 import User from '../views/User.vue';
+import UserProfile from '../views/UserProfile.vue';
+import UserPosts from '../views/UserPosts.vue';
 import Post from '../views/Post.vue';
 import PageNotFound from '../views/PageNotFound.vue';
 
@@ -28,7 +30,17 @@ export default new Router({
     },
     {
       path: '/users/:userId',
-      component: User
+      component: User,
+      children: [
+        {
+          path: 'profile',
+          component: UserProfile
+        },
+        {
+          path: 'posts',
+          component: UserPosts
+        }
+      ]
     },
     {
       path: '/users/:userId/posts/:postId',
@@ -43,6 +55,6 @@ export default new Router({
     if (savedPosition) {
       return savedPosition;
     }
-    return { x: 0, y: 0 };
+    return {x: 0, y: 0};
   }
 });

@@ -21,9 +21,9 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {users} from '../common/mocks/users';
   import {IUser} from '../common/interfaces/IUser';
   import {IPost} from '../common/interfaces/IPost';
+  import {UserService} from '../common/services/UserService';
 
   interface IUserData {
     user: IUser | null;
@@ -51,12 +51,14 @@
     },
     methods: {
       initPostData() {
-        this.user = users.find((user: IUser) =>
-          user.id === this.$route.params.userId) || null;
-        if (this.user) {
-          this.post = this.user.posts.find((post: IPost) =>
-            post.id === this.$route.params.postId) || null;
-        }
+        UserService.getUserById(this.$route.params.userId)
+          .then(user => {
+            this.user = user;
+          });
+        UserService.getUserPostById(this.$route.params.userId, this.$route.params.postId)
+          .then(post => {
+            this.post = post;
+          });
       }
     },
     created() {
