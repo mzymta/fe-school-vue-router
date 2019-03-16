@@ -6,7 +6,7 @@
         v-for="user in users"
         :key="user.id"
         tag="li"
-        :to="{name: $routeNames.User, params: {userId: user.id}}">
+        :to="{name: $routeNames.UserProfile, params: {userId: user.id}}">
         <a href="">{{ user.name }}</a>
       </router-link>
     </ul>

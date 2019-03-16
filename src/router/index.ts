@@ -35,7 +35,6 @@ export default new Router({
     {
       path: '/users/:userId',
       component: User,
-      name: RouteNames.User,
       children: [
         {
           path: '',
