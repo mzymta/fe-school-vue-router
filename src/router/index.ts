@@ -33,7 +33,7 @@ export default new Router({
       component: User,
       children: [
         {
-          path: 'profile',
+          path: '',
           component: UserProfile
         },
         {
