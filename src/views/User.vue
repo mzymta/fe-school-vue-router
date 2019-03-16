@@ -8,12 +8,12 @@
         <router-link
           tag="li"
           exact
-          :to="'/users/' + user.id">
+          :to="{name: $routeNames.UserProfile}">
           <a href="">Profile</a>
         </router-link>
         <router-link
           tag="li"
-          :to="'/users/' + user.id + '/posts/'">
+          :to="{name: $routeNames.UserPosts}">
           <a href="">Posts</a>
         </router-link>
       </ul>

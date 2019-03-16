@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Router from 'vue-router';
+import Router, {Route} from 'vue-router';
 import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Users from '../views/Users.vue';
@@ -8,6 +8,7 @@ import UserProfile from '../views/UserProfile.vue';
 import UserPosts from '../views/UserPosts.vue';
 import Post from '../views/Post.vue';
 import PageNotFound from '../views/PageNotFound.vue';
+import {RouteNames} from '@/router/RouteNames';
 
 Vue.use(Router);
 
@@ -18,33 +19,40 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Home
+      component: Home,
+      name: RouteNames.Home
     },
     {
       path: '/about',
-      component: About
+      component: About,
+      name: RouteNames.About
     },
     {
       path: '/users',
-      component: Users
+      component: Users,
+      name: RouteNames.Users
     },
     {
       path: '/users/:userId',
       component: User,
+      name: RouteNames.User,
       children: [
         {
           path: '',
-          component: UserProfile
+          component: UserProfile,
+          name: RouteNames.UserProfile
         },
         {
           path: 'posts',
-          component: UserPosts
+          component: UserPosts,
+          name: RouteNames.UserPosts
         }
       ]
     },
     {
       path: '/users/:userId/posts/:postId',
-      component: Post
+      component: Post,
+      name: RouteNames.Post
     },
     {
       path: '*',

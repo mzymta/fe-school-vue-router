@@ -11,7 +11,7 @@
           v-for="postItem in otherPosts"
           :key="postItem.id"
           tag="li"
-          :to="'/users/' + user.id + '/posts/' + postItem.id">
+          :to="{name: $routeNames.Post, params: {postId: postItem.id}}">
           <a href="">{{ postItem.title }}</a>
         </router-link>
       </ul>

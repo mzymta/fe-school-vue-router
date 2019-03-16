@@ -7,9 +7,9 @@
           <nav class="main-nav">
             <router-link
               exact
-              to="/">Home</router-link>
-            <router-link to="/about">About</router-link>
-            <router-link to="/users">Users</router-link>
+              :to="{name: $routeNames.Home}">Home</router-link>
+            <router-link :to="{name: $routeNames.About}">About</router-link>
+            <router-link disabled :to="{name: $routeNames.Users}">Users</router-link>
           </nav>
         </div>
       </div>

@@ -6,7 +6,7 @@
         v-for="post in posts"
         :key="post.id"
         tag="li"
-        :to="'/users/' + $route.params.userId + '/posts/' + post.id">
+        :to="{name: $routeNames.Post, params: {postId: post.id}}">
         <a href="">{{ post.title }}</a>
       </router-link>
     </ul>
