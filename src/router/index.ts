@@ -5,6 +5,7 @@ import About from '../views/About.vue';
 import Users from '../views/Users.vue';
 import User from '../views/User.vue';
 import Post from '../views/Post.vue';
+import PageNotFound from '../views/PageNotFound.vue';
 
 Vue.use(Router);
 
@@ -32,6 +33,10 @@ export default new Router({
     {
       path: '/users/:userId/posts/:postId',
       component: Post
+    },
+    {
+      path: '*',
+      component: PageNotFound
     }
   ],
   scrollBehavior(to, from, savedPosition) {
