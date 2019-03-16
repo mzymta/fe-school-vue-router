@@ -4,5 +4,6 @@ export enum RouteNames {
   Users = 'Users',
   UserProfile = 'UserProfile',
   UserPosts = 'UserPosts',
-  Post = 'Post'
+  Post = 'Post',
+  UserFriends = 'UserFriends'
 }

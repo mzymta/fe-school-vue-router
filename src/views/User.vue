@@ -16,6 +16,12 @@
           :to="{name: $routeNames.UserPosts}">
           <a href="">Posts</a>
         </router-link>
+        <router-link
+          tag="li"
+          v-if="user.friendIds.length"
+          :to="{name: $routeNames.UserFriends}">
+          <a href="">Friends ({{ user.friendIds.length }})</a>
+        </router-link>
       </ul>
     </div>
     <router-view/>
@@ -37,11 +43,21 @@
         user: null
       };
     },
+    watch: {
+      $route() {
+        this.getUser();
+      }
+    },
     created() {
-      UserService.getUserById(this.$route.params.userId)
-        .then(user => {
-          this.user = user;
-        });
+      this.getUser();
+    },
+    methods: {
+      getUser() {
+        UserService.getUserById(this.$route.params.userId)
+          .then(user => {
+            this.user = user;
+          });
+      }
     }
   });
 </script>

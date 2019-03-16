@@ -1,11 +1,12 @@
 import Vue from 'vue';
-import Router, {Route} from 'vue-router';
+import Router from 'vue-router';
 import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Users from '../views/Users.vue';
 import User from '../views/User.vue';
 import UserProfile from '../views/UserProfile.vue';
 import UserPosts from '../views/UserPosts.vue';
+import UserFriends from '../views/UserFriends.vue';
 import Post from '../views/Post.vue';
 import PageNotFound from '../views/PageNotFound.vue';
 import {RouteNames} from '@/router/RouteNames';
@@ -45,6 +46,11 @@ export default new Router({
           path: 'posts',
           component: UserPosts,
           name: RouteNames.UserPosts
+        },
+        {
+          path: 'friends',
+          component: UserFriends,
+          name: RouteNames.UserFriends
         }
       ]
     },
