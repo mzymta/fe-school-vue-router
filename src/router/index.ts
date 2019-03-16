@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Users from '../views/Users.vue';
 import User from '../views/User.vue';
+import Post from '../views/Post.vue';
 
 Vue.use(Router);
 
@@ -27,6 +28,10 @@ export default new Router({
     {
       path: '/users/:userId',
       component: User
+    },
+    {
+      path: '/users/:userId/posts/:postId',
+      component: Post
     }
   ],
   scrollBehavior(to, from, savedPosition) {
