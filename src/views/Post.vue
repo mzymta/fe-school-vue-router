@@ -4,6 +4,16 @@
     class="container">
     <h1 class="title is-1">Post "{{ post.title }}" by <i>{{ user.name }}</i></h1>
     <p>{{ post.text }}</p>
+    <h2 class="title is-2">Other posts by <i>{{ user.name }}</i></h2>
+    <ul class="other-posts">
+      <router-link
+        v-for="postItem in otherPosts"
+        :key="postItem.id"
+        tag="li"
+        :to="'/users/' + user.id + '/posts/' + postItem.id">
+        <a href="">{{ postItem.title }}</a>
+      </router-link>
+    </ul>
   </div>
 </template>
 
@@ -24,6 +34,11 @@
         user: null,
         post: null
       };
+    },
+    computed: {
+      otherPosts(): IPost[] {
+        return this.user.posts.filter((postItem: IPost) => postItem.id !== this.post.id);
+      }
     },
     created() {
       this.user = users.find((user: IUser) =>
