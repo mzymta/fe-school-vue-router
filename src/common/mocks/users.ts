@@ -17,7 +17,8 @@ export const users: IUser[] = [
         title: 'Hobbies',
         text: 'I like acting, playing music, drinking alcohol'
       }
-    ]
+    ],
+    friendIds: ['neil-alden-armstrong']
   },
   {
     id: 'neil-alden-armstrong',
@@ -30,7 +31,8 @@ export const users: IUser[] = [
         title: 'Moon adventures',
         text: 'I really liked being on the Moon'
       }
-    ]
+    ],
+    friendIds: ['billy-bob-thornton', 'lionel-messi']
   },
   {
     id: 'kim-jong-un',
@@ -48,6 +50,26 @@ export const users: IUser[] = [
         title: 'Bombs!',
         text: 'Who doesn\'t like bombs? Explosions are really cool!'
       }
-    ]
+    ],
+    friendIds: []
+  },
+  {
+    id: 'lionel-messi',
+    name: 'Lionel Messi',
+    description: `Lionel Messi is an Argentine professional footballer who plays as a forward
+    and captains both Spanish club Barcelona and the Argentina national team`,
+    posts: [
+      {
+        id: '5',
+        title: 'My Goal',
+        text: 'I kicked the ball and scored a goal. Right into the net.'
+      },
+      {
+        id: '6',
+        title: 'My Pass',
+        text: 'I passed the ball to my teammate and he scored the goal.'
+      }
+    ],
+    friendIds: ['neil-alden-armstrong']
   }
 ];

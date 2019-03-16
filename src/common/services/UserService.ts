@@ -21,4 +21,13 @@ export class UserService {
     return UserService.getUserPosts(userId)
       .then(posts => posts.find((post: IPost) => post.id === postId) || null);
   }
+
+  static getUserFriends(userId: string): Promise<IUser[]> {
+    return UserService.getUserById(userId)
+      .then(user => user ? user.friendIds : [])
+      .then(friendIds => Promise.all(
+        friendIds.map(friendId => this.getUserById(friendId))
+      ))
+      .then(friends => friends.filter(friend => friend !== null) as IUser[]);
+  }
 }

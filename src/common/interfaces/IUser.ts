@@ -5,4 +5,5 @@ export interface IUser {
   name: string;
   description: string;
   posts: IPost[];
+  friendIds: string[];
 }
