@@ -35,12 +35,18 @@ export default new Router({
     {
       path: '/users',
       component: Users,
-      name: RouteNames.Users
+      name: RouteNames.Users,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/users/:userId',
       component: User,
       props: true,
+      meta: {
+        requiresAuth: true
+      },
       children: [
         {
           path: '',
@@ -66,7 +72,10 @@ export default new Router({
       path: '/users/:userId/posts/:postId',
       component: Post,
       name: RouteNames.Post,
-      props: true
+      props: true,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '*',
