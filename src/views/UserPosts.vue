@@ -23,13 +23,16 @@
   }
 
   export default Vue.extend({
+    props: {
+      userId: String
+    },
     data(): IUserPostsData {
       return {
         posts: []
       };
     },
     created() {
-      UserService.getUserPosts(this.$route.params.userId)
+      UserService.getUserPosts(this.userId)
         .then(posts => {
           this.posts = posts;
         });

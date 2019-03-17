@@ -31,6 +31,10 @@
   }
 
   export default Vue.extend({
+    props: {
+      userId: String,
+      postId: String
+    },
     data(): IUserData {
       return {
         user: null,
@@ -51,11 +55,11 @@
     },
     methods: {
       initPostData() {
-        UserService.getUserById(this.$route.params.userId)
+        UserService.getUserById(this.userId)
           .then(user => {
             this.user = user;
           });
-        UserService.getUserPostById(this.$route.params.userId, this.$route.params.postId)
+        UserService.getUserPostById(this.userId, this.postId)
           .then(post => {
             this.post = post;
           });

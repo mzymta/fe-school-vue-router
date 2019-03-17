@@ -38,6 +38,9 @@
   }
 
   export default Vue.extend({
+    props: {
+      userId: String
+    },
     data(): IUserData {
       return {
         user: null
@@ -53,7 +56,7 @@
     },
     methods: {
       getUser() {
-        UserService.getUserById(this.$route.params.userId)
+        UserService.getUserById(this.userId)
           .then(user => {
             this.user = user;
           });

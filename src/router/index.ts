@@ -40,28 +40,33 @@ export default new Router({
     {
       path: '/users/:userId',
       component: User,
+      props: true,
       children: [
         {
           path: '',
           component: UserProfile,
-          name: RouteNames.UserProfile
+          name: RouteNames.UserProfile,
+          props: true
         },
         {
           path: 'posts',
           component: UserPosts,
-          name: RouteNames.UserPosts
+          name: RouteNames.UserPosts,
+          props: true
         },
         {
           path: 'friends',
           component: UserFriends,
-          name: RouteNames.UserFriends
+          name: RouteNames.UserFriends,
+          props: true
         }
       ]
     },
     {
       path: '/users/:userId/posts/:postId',
       component: Post,
-      name: RouteNames.Post
+      name: RouteNames.Post,
+      props: true
     },
     {
       path: '*',

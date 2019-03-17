@@ -23,13 +23,16 @@
   }
 
   export default Vue.extend({
+    props: {
+      userId: String
+    },
     data(): IUserFriendsData {
       return {
         friends: []
       };
     },
     created() {
-      UserService.getUserFriends(this.$route.params.userId)
+      UserService.getUserFriends(this.userId)
         .then(friends => {
           this.friends = friends;
         });
