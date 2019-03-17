@@ -24,6 +24,10 @@ export default new Router({
       name: RouteNames.Home
     },
     {
+      path: '/home',
+      redirect: {name: RouteNames.Home}
+    },
+    {
       path: '/about',
       component: About,
       name: RouteNames.About
