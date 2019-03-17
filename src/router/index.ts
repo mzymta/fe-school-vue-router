@@ -53,19 +53,28 @@ const router = new Router({
           path: '',
           component: UserProfile,
           name: RouteNames.UserProfile,
-          props: true
+          props: true,
+          meta: {
+            noScroll: true
+          }
         },
         {
           path: 'posts',
           component: UserPosts,
           name: RouteNames.UserPosts,
-          props: true
+          props: true,
+          meta: {
+            noScroll: true
+          }
         },
         {
           path: 'friends',
           component: UserFriends,
           name: RouteNames.UserFriends,
-          props: true
+          props: true,
+          meta: {
+            noScroll: true
+          }
         }
       ]
     },
@@ -84,10 +93,10 @@ const router = new Router({
     }
   ],
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
+    if (to.meta.noScroll && from.meta.noScroll) {
+      return;
     }
-    return {x: 0, y: 0};
+    return savedPosition || {x: 0, y: 0};
   }
 });
 

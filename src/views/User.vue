@@ -24,7 +24,9 @@
         </router-link>
       </ul>
     </div>
-    <router-view/>
+    <div class="user-content">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -66,7 +68,15 @@
 </script>
 
 <style lang="scss" scoped>
+  .user-menu {
+    margin-top: 300px;
+  }
+
   .user-menu li {
     margin-top: 0;
+  }
+
+  .user-content {
+    height: 1000px;
   }
 </style>
