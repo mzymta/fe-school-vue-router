@@ -10,10 +10,11 @@ import UserFriends from '../views/UserFriends.vue';
 import Post from '../views/Post.vue';
 import PageNotFound from '../views/PageNotFound.vue';
 import {RouteNames} from '@/router/RouteNames';
+import {AuthService} from '@/common/services/AuthService';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   linkActiveClass: 'is-active',
   linkExactActiveClass: 'is-exact-active',
@@ -89,3 +90,16 @@ export default new Router({
     return {x: 0, y: 0};
   }
 });
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(route => route.meta.requiresAuth);
+  if (requiresAuth && !AuthService.isLoggedIn()) {
+    // tslint:disable-next-line
+    console.log('401 - not authorized');
+    next({name: RouteNames.Home});
+  } else {
+    next();
+  }
+});
+
+export default router;
